@@ -18,7 +18,7 @@ object MediaTwitch {
         this.app = app
     }
 
-    fun getMediaFragment(gameId: String) = TwitchMediaFragment()
+    fun getMediaFragment(gameId: String) = TwitchMediaFragment.newInstance(gameId)
 
     fun launchMediaActivity(context: Context, gameId: String) {
         context.startActivity(
@@ -35,5 +35,4 @@ object MediaTwitch {
                 }
         )
     }
-
 }
