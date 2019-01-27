@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">media-twitch-sdk-android</string>
+
+    <string name="twitch_game_id" translatable="false">460521</string>
+    <string name="twitch_client_id" translatable="false">ajri23na9o60cdi0y97vdtmhgz6ktv</string>
 </resources>
