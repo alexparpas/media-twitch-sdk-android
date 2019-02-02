@@ -30,15 +30,7 @@ object MediaTwitch {
         this.clientId = clientId
     }
 
-    fun getMediaFragment(gameId: String) = TwitchMediaFragment.newInstance(gameId)
-
-    fun launchMediaActivity(context: Context, gameId: String) {
-        context.startActivity(
-                Intent(context, TwitchPlayerActivity::class.java).apply {
-                    putExtra(ARG_GAME_ID, gameId)
-                }
-        )
-    }
+    fun getTwitchMediaFragment(gameId: String) = TwitchMediaFragment.newInstance(gameId)
 
     fun playVideo(context: Context, channelName: String) {
         context.startActivity(

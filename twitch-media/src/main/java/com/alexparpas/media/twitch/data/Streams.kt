@@ -2,7 +2,7 @@ package com.alexparpas.media.twitch.data
 
 import com.google.gson.annotations.SerializedName
 
-data class GameStreamResponse(val data: List<GameStream>)
+data class GameStreamsResponse(val data: List<GameStream>)
 
 data class GameStream(
         val id: String?,

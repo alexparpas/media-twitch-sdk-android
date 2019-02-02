@@ -9,4 +9,13 @@ class TwitchMediaRepository internal constructor(private val service: TwitchMedi
 
     fun getStreamsByName(clientId: String, name: String): Single<List<GameStream>> =
             service.getStreams(clientId = clientId, name = name).map { it -> it.data }
+
+    fun getClips(clientId: String, gameId: String): Single<List<GameClip>> =
+            service.getClips(clientId = clientId, gameId = gameId).map { it -> it.data }
+
+    fun getVideosByGame(clientId: String, gameId: String): Single<List<GameVideo>> =
+            service.getVideos(clientId = clientId, gameId = gameId).map { it -> it.data }
+
+    fun getVideosByIds(clientId: String, ids: List<String>): Single<List<GameVideo>> =
+            service.getVideos(clientId = clientId, ids = ids.joinToString(",")).map { it -> it.data }
 }

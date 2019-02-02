@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
                 .beginTransaction()
                 .replace(
                         R.id.frag_container,
-                        MediaTwitch.getMediaFragment(getString(R.string.twitch_game_id))
+                        MediaTwitch.getTwitchMediaFragment(getString(R.string.twitch_game_id))
                 ).commit()
     }
 }

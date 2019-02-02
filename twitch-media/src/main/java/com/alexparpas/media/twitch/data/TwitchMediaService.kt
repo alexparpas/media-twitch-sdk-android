@@ -11,5 +11,18 @@ internal interface TwitchMediaService {
             @Header("Client-Id") clientId: String,
             @Query("game_id") gameId: String? = null,
             @Query("name") name: String? = null
-    ): Single<GameStreamResponse>
+    ): Single<GameStreamsResponse>
+
+    @GET("helix/clips")
+    fun getClips(
+            @Header("Client-Id") clientId: String,
+            @Query("game_id") gameId: String
+    ): Single<GameClipsResponse>
+
+    @GET("helix/videos")
+    fun getVideos(
+            @Header("Client-Id") clientId: String,
+            @Query("game_id") gameId: String? = null,
+            @Query("id") ids: String? = null
+    ): Single<GameVideosResponse>
 }
