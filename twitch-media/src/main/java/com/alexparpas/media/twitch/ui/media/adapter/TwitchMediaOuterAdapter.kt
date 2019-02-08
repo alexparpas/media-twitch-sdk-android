@@ -1,7 +1,7 @@
 package com.alexparpas.media.twitch.ui.media.adapter
 
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +13,7 @@ import com.alexparpas.media.twitch.data.VideoBinding
 import kotlinx.android.synthetic.main.layout_category_rv_item.view.*
 import kotlinx.android.synthetic.main.layout_video_rv_item.view.*
 
-class TwitchMediaOuterAdapter(private val callback: TwitchMediaVideosAdapter.Callback) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class TwitchMediaOuterAdapter(private val callback: TwitchMediaVideosAdapter.Callback) : androidx.recyclerview.widget.RecyclerView.Adapter<androidx.recyclerview.widget.RecyclerView.ViewHolder>() {
     var videos: List<MediaItem> = mutableListOf()
         set(value) {
             field = value
@@ -24,7 +24,7 @@ class TwitchMediaOuterAdapter(private val callback: TwitchMediaVideosAdapter.Cal
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder {
         return if (viewType == TYPE_CATEGORY) {
             CategoryViewHolder(LayoutInflater.from(parent.context)
                     .inflate(R.layout.layout_category_rv_item, parent, false))
@@ -45,7 +45,7 @@ class TwitchMediaOuterAdapter(private val callback: TwitchMediaVideosAdapter.Cal
 
     override fun getItemCount(): Int = videos.size
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: androidx.recyclerview.widget.RecyclerView.ViewHolder, position: Int) {
         if (holder.itemViewType == TYPE_CATEGORY) {
             (holder as CategoryViewHolder).bind((videos[position] as CategoryItem), callback)
         } else {
@@ -59,7 +59,7 @@ class TwitchMediaOuterAdapter(private val callback: TwitchMediaVideosAdapter.Cal
     }
 }
 
-class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class CategoryViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
     fun bind(categoryItem: CategoryItem, callback: TwitchMediaVideosAdapter.Callback) {
         itemView.category_tv.apply {
             text = categoryItem.categoryName
@@ -68,11 +68,11 @@ class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     }
 }
 
-class VideosViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class VideosViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
     fun bind(videos: List<VideoBinding>, callback: TwitchMediaVideosAdapter.Callback) {
         itemView.recycler_view?.apply {
             adapter = TwitchMediaVideosAdapter(callback).apply { this.streams = videos }
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context, androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL, false)
             setHasFixedSize(true)
         }
     }

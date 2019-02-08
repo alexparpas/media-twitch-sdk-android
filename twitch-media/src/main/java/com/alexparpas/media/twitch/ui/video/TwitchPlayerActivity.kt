@@ -2,7 +2,7 @@ package com.alexparpas.media.twitch.ui.video
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.alexparpas.media.MediaTwitch
 import com.alexparpas.media.twitch.R
 import kotlinx.android.synthetic.main.activity_twitch_player.*

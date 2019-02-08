@@ -1,10 +1,10 @@
 package com.alexparpas.media.twitch.ui.media
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.GridLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +14,7 @@ import com.alexparpas.media.twitch.data.CategoryItem
 import com.alexparpas.media.twitch.ui.media.adapter.TwitchMediaVideosAdapter
 import kotlinx.android.synthetic.main.fragment_twitch_media.*
 
-class TwitchMediaFragment : Fragment(), TwitchMediaVideosAdapter.Callback {
+class TwitchMediaFragment : androidx.fragment.app.Fragment(), TwitchMediaVideosAdapter.Callback {
     private lateinit var viewModel: TwitchMediaViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +44,7 @@ class TwitchMediaFragment : Fragment(), TwitchMediaVideosAdapter.Callback {
     private fun initRecyclerView(adapter: TwitchMediaVideosAdapter) {
         recycler_view.apply {
             this.adapter = adapter
-            layoutManager = GridLayoutManager(context, 2)
+            layoutManager = androidx.recyclerview.widget.GridLayoutManager(context, 2)
             setHasFixedSize(true)
         }
     }

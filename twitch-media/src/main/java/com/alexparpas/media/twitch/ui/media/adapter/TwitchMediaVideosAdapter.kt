@@ -1,6 +1,6 @@
 package com.alexparpas.media.twitch.ui.media.adapter
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +9,7 @@ import com.alexparpas.media.twitch.data.CategoryItem
 import com.alexparpas.media.twitch.data.VideoBinding
 import kotlinx.android.synthetic.main.layout_twitch_stream.view.*
 
-class TwitchMediaVideosAdapter(private val callback: Callback) : RecyclerView.Adapter<MainViewHolder>() {
+class TwitchMediaVideosAdapter(private val callback: Callback) : androidx.recyclerview.widget.RecyclerView.Adapter<MainViewHolder>() {
     var streams: List<VideoBinding> = mutableListOf()
         set(value) {
             field = value
@@ -34,7 +34,7 @@ class TwitchMediaVideosAdapter(private val callback: Callback) : RecyclerView.Ad
     }
 }
 
-class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class MainViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
     fun bind(stream: VideoBinding, callback: TwitchMediaVideosAdapter.Callback) {
         itemView.stream_tv.apply {
             text = stream.toString()
