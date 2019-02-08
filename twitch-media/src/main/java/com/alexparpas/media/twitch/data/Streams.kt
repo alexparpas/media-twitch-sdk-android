@@ -2,9 +2,9 @@ package com.alexparpas.media.twitch.data
 
 import com.google.gson.annotations.SerializedName
 
-data class GameStreamsResponse(val data: List<GameStream>)
+data class StreamsResponse(val data: List<Stream>)
 
-data class GameStream(
+data class Stream(
         val id: String?,
         @SerializedName("user_id") val userId: String?,
         @SerializedName("user_name") val userName: String?,
@@ -19,20 +19,13 @@ data class GameStream(
         @SerializedName("tag_ids") val tagIds: List<String>?
 )
 
-data class GameStreamMinimal(
-        val userId: String,
-        val userName: String,
-        val viewerCount: Long,
-        val startedAt: String,
-        val thumbnailUrl: String
-)
-
-fun GameStream.toMinimal(): GameStreamMinimal {
-    return GameStreamMinimal(
-            userId.orEmpty(),
-            userName.orEmpty(),
-            viewerCount ?: 0,
-            startedAt.orEmpty(),
-            thumbnailUrl.orEmpty()
+fun Stream.toMediaItemBinding(): VideoBinding {
+    return VideoBinding(
+            urlSuffix = userId.orEmpty(),
+            title = userName.orEmpty(),
+            subtitle = title.orEmpty(),
+            viewerCount = viewerCount?.toString().orEmpty(),
+            thumbnailUrl = thumbnailUrl.orEmpty(),
+            duration = startedAt.orEmpty()
     )
 }

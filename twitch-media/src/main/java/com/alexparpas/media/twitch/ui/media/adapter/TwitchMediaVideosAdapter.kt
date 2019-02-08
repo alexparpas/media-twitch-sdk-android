@@ -1,15 +1,16 @@
-package com.alexparpas.media.twitch.ui.media
+package com.alexparpas.media.twitch.ui.media.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.alexparpas.media.twitch.R
-import com.alexparpas.media.twitch.data.GameStreamMinimal
+import com.alexparpas.media.twitch.data.CategoryItem
+import com.alexparpas.media.twitch.data.VideoBinding
 import kotlinx.android.synthetic.main.layout_twitch_stream.view.*
 
-class TwitchMediaAdapter(private val callback: Callback) : RecyclerView.Adapter<MainViewHolder>() {
-    var streams: List<GameStreamMinimal> = mutableListOf()
+class TwitchMediaVideosAdapter(private val callback: Callback) : RecyclerView.Adapter<MainViewHolder>() {
+    var streams: List<VideoBinding> = mutableListOf()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -28,14 +29,16 @@ class TwitchMediaAdapter(private val callback: Callback) : RecyclerView.Adapter<
 
     interface Callback {
         fun onStreamClicked(channelName: String)
+
+        fun onCategoryClicked(category: CategoryItem)
     }
 }
 
 class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    fun bind(stream: GameStreamMinimal, callback: TwitchMediaAdapter.Callback) {
+    fun bind(stream: VideoBinding, callback: TwitchMediaVideosAdapter.Callback) {
         itemView.stream_tv.apply {
             text = stream.toString()
-            setOnClickListener { callback.onStreamClicked(stream.userName) }
+            setOnClickListener { callback.onStreamClicked(stream.title) }
         }
     }
 }

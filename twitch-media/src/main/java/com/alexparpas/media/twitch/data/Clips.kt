@@ -2,9 +2,9 @@ package com.alexparpas.media.twitch.data
 
 import com.google.gson.annotations.SerializedName
 
-data class GameClipsResponse(val data: List<GameClip>)
+data class GameClipsResponse(val data: List<Clip>)
 
-data class GameClip(
+data class Clip(
         val id: String,
         val url: String,
         @SerializedName("embed_url") val embedURL: String,
@@ -20,3 +20,14 @@ data class GameClip(
         @SerializedName("created_at") val createdAt: String,
         @SerializedName("thumbnail_url") val thumbnailURL: String
 )
+
+fun Clip.toMediaItemBinding() {
+    VideoBinding(
+            urlSuffix = embedURL, //TODO Figure out plz
+            title = title,
+            subtitle = creatorName,
+            viewerCount = viewCount.toString(),
+            thumbnailUrl = thumbnailURL,
+            duration = createdAt
+    )
+}

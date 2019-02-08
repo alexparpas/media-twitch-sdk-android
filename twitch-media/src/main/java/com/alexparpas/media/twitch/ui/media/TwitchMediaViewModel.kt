@@ -4,9 +4,7 @@ import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
-import com.alexparpas.media.twitch.data.GameStreamMinimal
-import com.alexparpas.media.twitch.data.TwitchMediaRepository
-import com.alexparpas.media.twitch.data.toMinimal
+import com.alexparpas.media.twitch.data.*
 import io.reactivex.Scheduler
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
@@ -21,8 +19,8 @@ class TwitchMediaViewModel(
         private val twitchMediaRepository: TwitchMediaRepository
 ) : ViewModel() {
     private val disposables = CompositeDisposable()
-    private val _streamsLiveData = MutableLiveData<List<GameStreamMinimal>>()
-    val streamsLiveData: LiveData<List<GameStreamMinimal>> = _streamsLiveData
+    private val _streamsLiveData = MutableLiveData<List<VideoBinding>>()
+    val streamsLiveData: LiveData<List<VideoBinding>> = _streamsLiveData
 
     init {
         getStreams()
@@ -30,7 +28,7 @@ class TwitchMediaViewModel(
 
     private fun getStreams() {
         twitchMediaRepository.getStreamsById(clientId, gameId)
-                .map { it.map { streams -> streams.toMinimal() } }
+                .map { it.map { streams -> streams.toMediaItemBinding() } }
                 .subscribeOn(ioScheduler)
                 .observeOn(uiScheduler)
                 .subscribeBy(

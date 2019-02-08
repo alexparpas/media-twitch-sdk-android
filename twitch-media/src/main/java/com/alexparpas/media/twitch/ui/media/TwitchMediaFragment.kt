@@ -10,10 +10,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.alexparpas.media.MediaTwitch
 import com.alexparpas.media.twitch.R
+import com.alexparpas.media.twitch.data.CategoryItem
+import com.alexparpas.media.twitch.ui.media.adapter.TwitchMediaVideosAdapter
 import kotlinx.android.synthetic.main.fragment_twitch_media.*
-import timber.log.Timber
 
-class TwitchMediaFragment : Fragment(), TwitchMediaAdapter.Callback {
+class TwitchMediaFragment : Fragment(), TwitchMediaVideosAdapter.Callback {
     private lateinit var viewModel: TwitchMediaViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +27,7 @@ class TwitchMediaFragment : Fragment(), TwitchMediaAdapter.Callback {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = TwitchMediaAdapter(this)
+        val adapter = TwitchMediaVideosAdapter(this)
 
         initRecyclerView(adapter)
 
@@ -40,7 +41,7 @@ class TwitchMediaFragment : Fragment(), TwitchMediaAdapter.Callback {
         ).get(TwitchMediaViewModel::class.java)
     }
 
-    private fun initRecyclerView(adapter: TwitchMediaAdapter) {
+    private fun initRecyclerView(adapter: TwitchMediaVideosAdapter) {
         recycler_view.apply {
             this.adapter = adapter
             layoutManager = GridLayoutManager(context, 2)
@@ -48,12 +49,16 @@ class TwitchMediaFragment : Fragment(), TwitchMediaAdapter.Callback {
         }
     }
 
-    private fun observeStreams(adapter: TwitchMediaAdapter) {
+    private fun observeStreams(adapter: TwitchMediaVideosAdapter) {
         viewModel.streamsLiveData.observe(viewLifecycleOwner, Observer { streams ->
             if (streams != null) {
                 adapter.streams = streams
             }
         })
+    }
+
+    override fun onCategoryClicked(category: CategoryItem) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun onStreamClicked(channelName: String) {
