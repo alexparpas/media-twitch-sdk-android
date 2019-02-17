@@ -6,8 +6,8 @@ import android.content.Intent
 import com.alexparpas.media.twitch.R
 import com.alexparpas.media.twitch.data.TwitchMediaRepository
 import com.alexparpas.media.twitch.data.TwitchMediaService
-import com.alexparpas.media.twitch.ui.media.TwitchMediaFragment
-import com.alexparpas.media.twitch.ui.media.TwitchMediaViewModelFactory
+import com.alexparpas.media.twitch.ui.media.main.TwitchMediaFragment
+import com.alexparpas.media.twitch.ui.media.main.TwitchMediaViewModelFactory
 import com.alexparpas.media.twitch.ui.video.TwitchPlayerActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -18,7 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object MediaTwitch {
     private lateinit var app: Application
     private lateinit var clientId: String
-    internal const val ARG_CHANNEL_ID = "ARG_CHANNEL_ID"
+    internal const val ARG_LINK = "ARG_LINK"
     internal const val ARG_GAME_ID = "ARG_GAME_ID"
 
     val twitchMediaRepository by lazy {
@@ -32,10 +32,10 @@ object MediaTwitch {
 
     fun getTwitchMediaFragment(gameId: String) = TwitchMediaFragment.newInstance(gameId)
 
-    fun playVideo(context: Context, channelName: String) {
+    fun playVideo(context: Context, url: String) {
         context.startActivity(
                 Intent(context, TwitchPlayerActivity::class.java).apply {
-                    putExtra(ARG_CHANNEL_ID, channelName)
+                    putExtra(ARG_LINK, url)
                 }
         )
     }

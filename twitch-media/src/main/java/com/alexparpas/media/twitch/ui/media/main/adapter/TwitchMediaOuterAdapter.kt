@@ -1,7 +1,5 @@
-package com.alexparpas.media.twitch.ui.media.adapter
+package com.alexparpas.media.twitch.ui.media.main.adapter
 
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,15 +12,11 @@ import kotlinx.android.synthetic.main.layout_category_rv_item.view.*
 import kotlinx.android.synthetic.main.layout_video_rv_item.view.*
 
 class TwitchMediaOuterAdapter(private val callback: TwitchMediaVideosAdapter.Callback) : androidx.recyclerview.widget.RecyclerView.Adapter<androidx.recyclerview.widget.RecyclerView.ViewHolder>() {
-    var videos: List<MediaItem> = mutableListOf()
+    var streams: List<MediaItem> = mutableListOf()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
-
-    init {
-
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder {
         return if (viewType == TYPE_CATEGORY) {
@@ -34,22 +28,21 @@ class TwitchMediaOuterAdapter(private val callback: TwitchMediaVideosAdapter.Cal
         }
     }
 
-
     override fun getItemViewType(position: Int): Int {
-        return if (videos[position] is CategoryItem) {
+        return if (streams[position] is CategoryItem) {
             TYPE_CATEGORY
         } else {
             TYPE_VIDEOS
         }
     }
 
-    override fun getItemCount(): Int = videos.size
+    override fun getItemCount(): Int = streams.size
 
     override fun onBindViewHolder(holder: androidx.recyclerview.widget.RecyclerView.ViewHolder, position: Int) {
         if (holder.itemViewType == TYPE_CATEGORY) {
-            (holder as CategoryViewHolder).bind((videos[position] as CategoryItem), callback)
+            (holder as CategoryViewHolder).bind((streams[position] as CategoryItem), callback)
         } else {
-            (holder as VideosViewHolder).bind((videos[position] as MediaBindingItem).videos, callback)
+            (holder as VideosViewHolder).bind((streams[position] as MediaBindingItem).videos, callback)
         }
     }
 

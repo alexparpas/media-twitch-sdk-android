@@ -19,9 +19,15 @@ data class Stream(
         @SerializedName("tag_ids") val tagIds: List<String>?
 )
 
-fun Stream.toMediaItemBinding(): VideoBinding {
+fun Stream.toVideoBinding(): VideoBinding {
+    val thumbnailUrl = this.thumbnailUrl
+            ?.replace("{width}", "320")
+            ?.replace("{height}", "180")
+
+    val link = "https://player.twitch.tv/?channel=${userName.orEmpty()}"
+
     return VideoBinding(
-            urlSuffix = userId.orEmpty(),
+            link = link,
             title = userName.orEmpty(),
             subtitle = title.orEmpty(),
             viewerCount = viewerCount?.toString().orEmpty(),

@@ -13,18 +13,18 @@ class TwitchPlayerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_twitch_player)
 
-        val channelId = intent.getStringExtra(MediaTwitch.ARG_CHANNEL_ID)
-        embedPlayer(channelId)
+        val link = intent.getStringExtra(MediaTwitch.ARG_LINK)
+        embedPlayer(link)
     }
 
     @SuppressLint("SetJavaScriptEnabled")
-    private fun embedPlayer(channelId: String?) {
+        private fun embedPlayer(link: String?) {
         web_view.apply {
             settings.apply {
                 javaScriptEnabled = true
                 mediaPlaybackRequiresUserGesture = false
             }
-            loadUrl("https://player.twitch.tv/?channel=$channelId")
+            loadUrl(link)
         }
     }
 }

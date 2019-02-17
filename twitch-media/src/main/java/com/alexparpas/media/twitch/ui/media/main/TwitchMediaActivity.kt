@@ -1,4 +1,4 @@
-package com.alexparpas.media.twitch.ui.media
+package com.alexparpas.media.twitch.ui.media.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

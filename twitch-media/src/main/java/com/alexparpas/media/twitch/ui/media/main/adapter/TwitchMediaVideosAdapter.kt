@@ -1,12 +1,12 @@
-package com.alexparpas.media.twitch.ui.media.adapter
+package com.alexparpas.media.twitch.ui.media.main.adapter
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.alexparpas.media.twitch.R
 import com.alexparpas.media.twitch.data.CategoryItem
 import com.alexparpas.media.twitch.data.VideoBinding
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.layout_twitch_stream.view.*
 
 class TwitchMediaVideosAdapter(private val callback: Callback) : androidx.recyclerview.widget.RecyclerView.Adapter<MainViewHolder>() {
@@ -28,17 +28,21 @@ class TwitchMediaVideosAdapter(private val callback: Callback) : androidx.recycl
     }
 
     interface Callback {
-        fun onStreamClicked(channelName: String)
+        fun onStreamClicked(link: String)
 
         fun onCategoryClicked(category: CategoryItem)
     }
 }
 
 class MainViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
-    fun bind(stream: VideoBinding, callback: TwitchMediaVideosAdapter.Callback) {
-        itemView.stream_tv.apply {
-            text = stream.toString()
-            setOnClickListener { callback.onStreamClicked(stream.title) }
+    fun bind(item: VideoBinding, callback: TwitchMediaVideosAdapter.Callback) {
+        if (item.thumbnailUrl.isNotBlank()) {
+            Picasso.get().load(item.thumbnailUrl).into(itemView.thumbnail_iv)
         }
+        itemView.video_title_tv.text = item.title
+        itemView.subtitle_tv.text = item.subtitle
+        itemView.views_tv.text = item.viewerCount
+        itemView.duration_tv.text = item.duration
+        itemView.setOnClickListener { callback.onStreamClicked(item.link) }
     }
 }

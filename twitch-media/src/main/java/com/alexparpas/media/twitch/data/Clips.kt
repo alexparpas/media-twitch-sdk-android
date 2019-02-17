@@ -21,13 +21,11 @@ data class Clip(
         @SerializedName("thumbnail_url") val thumbnailURL: String
 )
 
-fun Clip.toMediaItemBinding() {
-    VideoBinding(
-            urlSuffix = embedURL, //TODO Figure out plz
-            title = title,
-            subtitle = creatorName,
-            viewerCount = viewCount.toString(),
-            thumbnailUrl = thumbnailURL,
-            duration = createdAt
-    )
-}
+fun Clip.toVideoBinding() = VideoBinding(
+        link = embedURL,
+        title = title,
+        subtitle = creatorName,
+        viewerCount = viewCount.toString(),
+        thumbnailUrl = thumbnailURL,
+        duration = createdAt
+)

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <drawable name="mt_main_background">#FFFFFF</drawable>
+    <drawable name="mt_more_background">#FFFFFF</drawable>
+    <color name="mt_default_text_color">#000000</color>
+    <string name="mt_category_more">See All</string>
+    <string name="mt_error_generic">Could not load videos</string>
+
+    <style name="BaseThumbnailIvStyle">
+        <item name="android:layout_width">180dp</item>
+        <item name="android:adjustViewBounds">true</item>
+    </style>
+
+    <style name="BaseDurationTvStyle">
+        <item name="android:background">#000000</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:padding">4dp</item>
+    </style>
+
+    <style name="BaseTitleTvStyle">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:lines">2</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:textColor">@color/mt_default_text_color</item>
+    </style>
+
+    <style name="BaseChannelTvStyle">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:lines">1</item>
+        <item name="android:textColor">@color/mt_default_text_color</item>
+    </style>
+
+    <style name="BaseViewsTvStyle">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:lines">1</item>
+        <item name="android:textColor">@color/mt_default_text_color</item>
+    </style>
+
+    <style name="BaseCategoryTvStyle">
+        <item name="android:ellipsize">end</item>
+        <item name="android:lines">1</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/mt_default_text_color</item>
+    </style>
+
+    <style name="BaseSeeAllTvStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/mt_default_text_color</item>
+        <item name="android:text">@string/mt_category_more</item>
+
+    </style>
+
+    <style name="MtCategoryTvStyle" parent="BaseCategoryTvStyle" />
+
+    <style name="MtThumbnailIvStyle" parent="BaseThumbnailIvStyle" />
+
+    <style name="MtDurationTvStyle" parent="BaseDurationTvStyle" />
+
+    <style name="MtTitleTvStyle" parent="BaseTitleTvStyle" />
+
+    <style name="MtChannelTvStyle" parent="BaseChannelTvStyle" />
+
+    <style name="MtViewsTvStyle" parent="BaseViewsTvStyle" />
+
+    <style name="MtSeeAllTvStyle" parent="BaseSeeAllTvStyle" />
+</resources>

@@ -1,17 +1,17 @@
-package com.alexparpas.media.twitch.ui.media
+package com.alexparpas.media.twitch.ui.media.main
 
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.alexparpas.media.MediaTwitch
 import com.alexparpas.media.twitch.R
 import com.alexparpas.media.twitch.data.CategoryItem
-import com.alexparpas.media.twitch.ui.media.adapter.TwitchMediaVideosAdapter
+import com.alexparpas.media.twitch.ui.media.main.adapter.TwitchMediaOuterAdapter
+import com.alexparpas.media.twitch.ui.media.main.adapter.TwitchMediaVideosAdapter
 import kotlinx.android.synthetic.main.fragment_twitch_media.*
 
 class TwitchMediaFragment : androidx.fragment.app.Fragment(), TwitchMediaVideosAdapter.Callback {
@@ -27,7 +27,7 @@ class TwitchMediaFragment : androidx.fragment.app.Fragment(), TwitchMediaVideosA
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = TwitchMediaVideosAdapter(this)
+        val adapter = TwitchMediaOuterAdapter(this)
 
         initRecyclerView(adapter)
 
@@ -41,15 +41,15 @@ class TwitchMediaFragment : androidx.fragment.app.Fragment(), TwitchMediaVideosA
         ).get(TwitchMediaViewModel::class.java)
     }
 
-    private fun initRecyclerView(adapter: TwitchMediaVideosAdapter) {
+    private fun initRecyclerView(adapter: TwitchMediaOuterAdapter) {
         recycler_view.apply {
             this.adapter = adapter
-            layoutManager = androidx.recyclerview.widget.GridLayoutManager(context, 2)
+            layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)
         }
     }
 
-    private fun observeStreams(adapter: TwitchMediaVideosAdapter) {
+    private fun observeStreams(adapter: TwitchMediaOuterAdapter) {
         viewModel.streamsLiveData.observe(viewLifecycleOwner, Observer { streams ->
             if (streams != null) {
                 adapter.streams = streams
@@ -61,8 +61,8 @@ class TwitchMediaFragment : androidx.fragment.app.Fragment(), TwitchMediaVideosA
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onStreamClicked(channelName: String) {
-        MediaTwitch.playVideo(requireContext(), channelName)
+    override fun onStreamClicked(link: String) {
+        MediaTwitch.playVideo(requireContext(), link)
     }
 
     companion object {

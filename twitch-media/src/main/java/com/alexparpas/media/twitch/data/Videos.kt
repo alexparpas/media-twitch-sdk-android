@@ -23,13 +23,17 @@ data class Video(
         val duration: String
 )
 
-fun Video.toMediaItemBinding() {
-    VideoBinding(
-            urlSuffix = url,
+fun Video.toVideoBinding(): VideoBinding {
+    val thumbnailUrl = thumbnailURL
+            .replace("%{width}", "320")
+            .replace("%{height}", "180")
+
+    return VideoBinding(
+            link = url,
             title = title,
             subtitle = userName,
             viewerCount = viewCount.toString(),
-            thumbnailUrl = thumbnailURL,
+            thumbnailUrl = thumbnailUrl,
             duration = duration
     )
 }
