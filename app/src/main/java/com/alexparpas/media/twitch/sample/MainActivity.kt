@@ -2,7 +2,8 @@ package com.alexparpas.media.twitch.sample
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.alexparpas.media.MediaTwitch
+import com.alexparpas.media.twitch.ui.MediaTwitchUi
+import com.alexparpas.media.twitch.core.MediaTwitch
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,7 +16,7 @@ class MainActivity : AppCompatActivity() {
                 .beginTransaction()
                 .replace(
                         R.id.frag_container,
-                        MediaTwitch.getTwitchMediaFragment(getString(R.string.twitch_game_id))
+                        MediaTwitchUi.getTwitchMediaFragment(getString(R.string.twitch_game_id))
                 ).commit()
     }
 }

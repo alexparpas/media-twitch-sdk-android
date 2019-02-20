@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Core</string>
+
+    <string name="twitch_api_base_url" translatable="false">https://api.twitch.tv/</string>
+</resources>

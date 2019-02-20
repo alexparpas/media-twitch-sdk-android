@@ -1,1 +1,1 @@
-include ':app', ':twitch-media'
+include ':app', ':media-twitch-ui', ':media-twitch-core'

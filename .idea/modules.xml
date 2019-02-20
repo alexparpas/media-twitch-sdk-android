@@ -3,8 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/media-twitch-core/media-twitch-core.iml" filepath="$PROJECT_DIR$/media-twitch-core/media-twitch-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/media-twitch-sdk-android.iml" filepath="$PROJECT_DIR$/media-twitch-sdk-android.iml" />
-      <module fileurl="file://$PROJECT_DIR$/twitch-media/twitch-media.iml" filepath="$PROJECT_DIR$/twitch-media/twitch-media.iml" />
+      <module fileurl="file://$PROJECT_DIR$/media-twitch-ui/media-twitch-ui.iml" filepath="$PROJECT_DIR$/media-twitch-ui/media-twitch-ui.iml" />
     </modules>
   </component>
 </project>

@@ -1,5 +1,0 @@
-<resources>
-    <string name="app_name">Media - Twitch</string>
-
-    <string name="twitch_api_base_url" translatable="false">https://api.twitch.tv/</string>
-</resources>
