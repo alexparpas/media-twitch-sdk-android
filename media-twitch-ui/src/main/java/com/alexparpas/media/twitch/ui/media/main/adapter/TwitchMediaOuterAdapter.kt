@@ -10,8 +10,8 @@ import com.alexparpas.media.twitch.core.MediaBindingItem
 import com.alexparpas.media.twitch.core.MediaItem
 import com.alexparpas.media.twitch.core.VideoBinding
 import com.alexparpas.media.twitch.ui.R
-import kotlinx.android.synthetic.main.layout_category_rv_item.view.*
-import kotlinx.android.synthetic.main.layout_video_rv_item.view.*
+import kotlinx.android.synthetic.main.mt_layout_category_rv_item.view.*
+import kotlinx.android.synthetic.main.mt_layout_video_rv_item.view.*
 
 class TwitchMediaOuterAdapter(private val callback: TwitchMediaVideosAdapter.Callback) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var streams: List<MediaItem> = mutableListOf()
@@ -23,10 +23,10 @@ class TwitchMediaOuterAdapter(private val callback: TwitchMediaVideosAdapter.Cal
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == TYPE_CATEGORY) {
             CategoryViewHolder(LayoutInflater.from(parent.context)
-                    .inflate(R.layout.layout_category_rv_item, parent, false))
+                    .inflate(R.layout.mt_layout_category_rv_item, parent, false))
         } else {
             VideosViewHolder(LayoutInflater.from(parent.context)
-                    .inflate(R.layout.layout_video_rv_item, parent, false))
+                    .inflate(R.layout.mt_layout_video_rv_item, parent, false))
         }
     }
 

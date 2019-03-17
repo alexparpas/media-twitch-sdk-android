@@ -12,7 +12,7 @@ import com.alexparpas.media.twitch.ui.MediaTwitchUi
 import com.alexparpas.media.twitch.ui.R
 import com.alexparpas.media.twitch.ui.media.main.adapter.TwitchMediaOuterAdapter
 import com.alexparpas.media.twitch.ui.media.main.adapter.TwitchMediaVideosAdapter
-import kotlinx.android.synthetic.main.fragment_twitch_media.*
+import kotlinx.android.synthetic.main.mt_fragment_twitch_media.*
 
 class TwitchMediaFragment : androidx.fragment.app.Fragment(), TwitchMediaVideosAdapter.Callback {
     private lateinit var viewModel: TwitchMediaViewModel
@@ -23,7 +23,7 @@ class TwitchMediaFragment : androidx.fragment.app.Fragment(), TwitchMediaVideosA
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-            inflater.inflate(R.layout.fragment_twitch_media, container, false)
+            inflater.inflate(R.layout.mt_fragment_twitch_media, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

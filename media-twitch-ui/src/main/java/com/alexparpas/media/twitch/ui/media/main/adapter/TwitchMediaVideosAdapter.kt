@@ -8,7 +8,7 @@ import com.alexparpas.media.twitch.core.CategoryItem
 import com.alexparpas.media.twitch.core.VideoBinding
 import com.alexparpas.media.twitch.ui.R
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.layout_twitch_stream.view.*
+import kotlinx.android.synthetic.main.mt_layout_twitch_stream.view.*
 
 class TwitchMediaVideosAdapter(private val callback: Callback) : RecyclerView.Adapter<MainViewHolder>() {
     var streams: List<VideoBinding> = mutableListOf()
@@ -19,7 +19,7 @@ class TwitchMediaVideosAdapter(private val callback: Callback) : RecyclerView.Ad
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         return MainViewHolder(LayoutInflater.from(parent.context)
-                .inflate(R.layout.layout_twitch_stream, parent, false))
+                .inflate(R.layout.mt_layout_twitch_stream, parent, false))
     }
 
     override fun getItemCount(): Int = streams.size

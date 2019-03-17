@@ -5,13 +5,13 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.alexparpas.media.twitch.ui.MediaTwitchUi
 import com.alexparpas.media.twitch.ui.R
-import kotlinx.android.synthetic.main.activity_twitch_player.*
+import kotlinx.android.synthetic.main.mt_activity_twitch_player.*
 
 class TwitchPlayerActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_twitch_player)
+        setContentView(R.layout.mt_activity_twitch_player)
 
         val link = intent.getStringExtra(MediaTwitchUi.ARG_LINK)
         embedPlayer(link)
