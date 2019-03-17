@@ -1,1 +1,9 @@
-<manifest package="com.alexparpas.media.twitch.ui" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.alexparpas.media.twitch.ui">
+
+    <application>
+        <activity android:name="com.alexparpas.media.twitch.ui.video.TwitchPlayerActivity" />
+    </application>
+</manifest>
+
+
