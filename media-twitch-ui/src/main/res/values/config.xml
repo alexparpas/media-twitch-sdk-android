@@ -7,18 +7,18 @@
     <string name="mt_category_more">See All</string>
     <string name="mt_error_generic">Could not load videos</string>
 
-    <style name="BaseThumbnailIvStyle">
+    <style name="BaseTwitchThumbnailIvStyle">
         <item name="android:layout_width">180dp</item>
         <item name="android:adjustViewBounds">true</item>
     </style>
 
-    <style name="BaseDurationTvStyle">
+    <style name="BaseTwitchDurationTvStyle">
         <item name="android:background">#000000</item>
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:padding">4dp</item>
     </style>
 
-    <style name="BaseTitleTvStyle">
+    <style name="BaseTwitchTitleTvStyle">
         <item name="android:layout_gravity">center</item>
         <item name="android:ellipsize">end</item>
         <item name="android:lines">2</item>
@@ -27,21 +27,21 @@
         <item name="android:textColor">@color/mt_default_text_color</item>
     </style>
 
-    <style name="BaseChannelTvStyle">
+    <style name="BaseTwitchChannelTvStyle">
         <item name="android:layout_gravity">center</item>
         <item name="android:ellipsize">end</item>
         <item name="android:lines">1</item>
         <item name="android:textColor">@color/mt_default_text_color</item>
     </style>
 
-    <style name="BaseViewsTvStyle">
+    <style name="BaseTwitchViewsTvStyle">
         <item name="android:layout_gravity">center</item>
         <item name="android:ellipsize">end</item>
         <item name="android:lines">1</item>
         <item name="android:textColor">@color/mt_default_text_color</item>
     </style>
 
-    <style name="BaseCategoryTvStyle">
+    <style name="BaseTwitchCategoryTvStyle">
         <item name="android:ellipsize">end</item>
         <item name="android:lines">1</item>
         <item name="android:textAllCaps">true</item>
@@ -50,24 +50,24 @@
         <item name="android:textColor">@color/mt_default_text_color</item>
     </style>
 
-    <style name="BaseSeeAllTvStyle">
+    <style name="BaseTwitchSeeAllTvStyle">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/mt_default_text_color</item>
         <item name="android:text">@string/mt_category_more</item>
 
     </style>
 
-    <style name="MtCategoryTvStyle" parent="BaseCategoryTvStyle" />
+    <style name="MtCategoryTvStyle" parent="BaseTwitchCategoryTvStyle" />
 
-    <style name="MtThumbnailIvStyle" parent="BaseThumbnailIvStyle" />
+    <style name="MtThumbnailIvStyle" parent="BaseTwitchThumbnailIvStyle" />
 
-    <style name="MtDurationTvStyle" parent="BaseDurationTvStyle" />
+    <style name="MtDurationTvStyle" parent="BaseTwitchDurationTvStyle" />
 
-    <style name="MtTitleTvStyle" parent="BaseTitleTvStyle" />
+    <style name="MtTitleTvStyle" parent="BaseTwitchTitleTvStyle" />
 
-    <style name="MtChannelTvStyle" parent="BaseChannelTvStyle" />
+    <style name="MtChannelTvStyle" parent="BaseTwitchChannelTvStyle" />
 
-    <style name="MtViewsTvStyle" parent="BaseViewsTvStyle" />
+    <style name="MtViewsTvStyle" parent="BaseTwitchViewsTvStyle" />
 
-    <style name="MtSeeAllTvStyle" parent="BaseSeeAllTvStyle" />
+    <style name="MtSeeAllTvStyle" parent="BaseTwitchSeeAllTvStyle" />
 </resources>
