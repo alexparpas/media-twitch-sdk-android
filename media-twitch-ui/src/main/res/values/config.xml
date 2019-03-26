@@ -41,13 +41,19 @@
         <item name="android:textColor">@color/mt_default_text_color</item>
     </style>
 
-    <style name="BaseTwitchCategoryTvStyle">
+    <style name="BaseTwitchCategoryTitleTvStyle">
         <item name="android:ellipsize">end</item>
         <item name="android:lines">1</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/mt_default_text_color</item>
+    </style>
+
+    <style name="BaseTwitchCategoryDescriptionTvStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/mt_default_text_color</item>
+        <item name="android:text">@string/mt_category_more</item>
     </style>
 
     <style name="BaseTwitchSeeAllTvStyle">
@@ -57,7 +63,9 @@
 
     </style>
 
-    <style name="MtCategoryTvStyle" parent="BaseTwitchCategoryTvStyle" />
+    <style name="MtCategoryTitleTvStyle" parent="BaseTwitchCategoryTitleTvStyle" />
+
+    <style name="MtCategoryDescriptionTvStyle" parent="BaseTwitchCategoryTitleTvStyle" />
 
     <style name="MtThumbnailIvStyle" parent="BaseTwitchThumbnailIvStyle" />
 

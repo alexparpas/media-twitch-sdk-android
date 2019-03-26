@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <public name="mt_main_background" type="drawable" />
+    <public name="mt_more_background" type="drawable" />
+    <public name="mt_default_text_colour" type="color" />
+    <public name="mt_category_more" type="string" />
+    <public name="mt_error_generic" type="string" />
+
+    <public name="MtCategoryTitleTvStyle" type="style" />
+    <public name="MtCategoryDescriptionTvStyle" type="style" />
+    <public name="MtThumbnailIvStyle" type="style" />
+    <public name="MtDurationTvStyle" type="style" />
+    <public name="MtTitleTvStyle" type="style" />
+    <public name="MtChannelTvStyle" type="style" />
+    <public name="MtViewsTvStyle" type="style" />
+    <public name="MtSeeAllTvStyle" type="style" />
+
+</resources>

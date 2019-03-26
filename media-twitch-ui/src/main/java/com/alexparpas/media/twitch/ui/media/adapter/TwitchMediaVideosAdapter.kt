@@ -1,4 +1,4 @@
-package com.alexparpas.media.twitch.ui.media.main.adapter
+package com.alexparpas.media.twitch.ui.media.adapter
 
 import android.view.LayoutInflater
 import android.view.View

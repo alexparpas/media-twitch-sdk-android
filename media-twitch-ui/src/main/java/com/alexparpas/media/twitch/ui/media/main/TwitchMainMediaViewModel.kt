@@ -13,7 +13,7 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 import timber.log.Timber
 
-class TwitchMediaViewModel(
+class TwitchMainMediaViewModel(
         private val clientId: String,
         private val gameId: String,
         private val ioScheduler: Scheduler,
@@ -66,7 +66,7 @@ class TwitchMediaViewModel(
 }
 
 @Suppress("UNCHECKED_CAST")
-class TwitchMediaViewModelFactory(
+class TwitchMainMediaViewModelFactory(
         private val clientId: String,
         private val gameId: String,
         private val ioScheduler: Scheduler,
@@ -74,7 +74,7 @@ class TwitchMediaViewModelFactory(
         private val twitchMediaRepository: TwitchMediaRepository
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return TwitchMediaViewModel(
+        return TwitchMainMediaViewModel(
                 clientId,
                 gameId,
                 ioScheduler,

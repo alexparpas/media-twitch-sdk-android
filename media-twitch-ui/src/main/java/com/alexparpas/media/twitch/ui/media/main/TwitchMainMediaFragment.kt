@@ -10,12 +10,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.alexparpas.media.twitch.core.CategoryItem
 import com.alexparpas.media.twitch.ui.MediaTwitchUi
 import com.alexparpas.media.twitch.ui.R
-import com.alexparpas.media.twitch.ui.media.main.adapter.TwitchMediaOuterAdapter
-import com.alexparpas.media.twitch.ui.media.main.adapter.TwitchMediaVideosAdapter
+import com.alexparpas.media.twitch.ui.media.adapter.TwitchMediaOuterAdapter
+import com.alexparpas.media.twitch.ui.media.adapter.TwitchMediaVideosAdapter
 import kotlinx.android.synthetic.main.mt_fragment_twitch_media.*
 
-class TwitchMediaFragment : androidx.fragment.app.Fragment(), TwitchMediaVideosAdapter.Callback {
-    private lateinit var viewModel: TwitchMediaViewModel
+class TwitchMainMediaFragment : androidx.fragment.app.Fragment(), TwitchMediaVideosAdapter.Callback {
+    private lateinit var viewModel: TwitchMainMediaViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +38,7 @@ class TwitchMediaFragment : androidx.fragment.app.Fragment(), TwitchMediaVideosA
         viewModel = ViewModelProviders.of(
                 this,
                 MediaTwitchUi.Injection.provideMediaViewModelFactory(gameId = requireNotNull(arguments?.getString(MediaTwitchUi.ARG_GAME_ID)))
-        ).get(TwitchMediaViewModel::class.java)
+        ).get(TwitchMainMediaViewModel::class.java)
     }
 
     private fun initRecyclerView(adapter: TwitchMediaOuterAdapter) {
@@ -66,8 +66,8 @@ class TwitchMediaFragment : androidx.fragment.app.Fragment(), TwitchMediaVideosA
     }
 
     companion object {
-        fun newInstance(gameId: String): TwitchMediaFragment {
-            return TwitchMediaFragment().apply {
+        fun newInstance(gameId: String): TwitchMainMediaFragment {
+            return TwitchMainMediaFragment().apply {
                 arguments = Bundle().apply {
                     putString(MediaTwitchUi.ARG_GAME_ID, gameId)
                 }
