@@ -14,7 +14,7 @@ import io.reactivex.rxkotlin.subscribeBy
 import timber.log.Timber
 
 class TwitchMainMediaViewModel(
-        private val clientId: String,
+        private val gameId: String,
         private val ioScheduler: Scheduler,
         private val uiScheduler: Scheduler,
         private val twitchMediaRepository: TwitchMediaRepository
@@ -29,9 +29,9 @@ class TwitchMainMediaViewModel(
 
     private fun getLiveStreams() {
         Single.zip(
-                twitchMediaRepository.getLiveStreamsById(clientId, gameId),
-                twitchMediaRepository.getClips(clientId, gameId),
-                twitchMediaRepository.getVideosByGame(clientId, gameId),
+                twitchMediaRepository.getLiveStreamsById(gameId),
+                twitchMediaRepository.getClips(gameId),
+                twitchMediaRepository.getVideosByGame(gameId),
                 Function3<List<Stream>, List<Clip>, List<Video>, List<MediaItem>> { streams, clips, videos ->
                     transformData(streams, clips, videos)
                 })

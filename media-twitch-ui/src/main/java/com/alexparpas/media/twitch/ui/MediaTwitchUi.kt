@@ -26,7 +26,6 @@ object MediaTwitchUi {
     internal object Injection {
         fun provideMediaViewModelFactory(gameId: String) =
                 TwitchMainMediaViewModelFactory(
-                        clientId = MediaTwitch.clientId,
                         gameId = gameId,
                         ioScheduler = Schedulers.io(),
                         uiScheduler = AndroidSchedulers.mainThread(),
