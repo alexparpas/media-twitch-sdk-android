@@ -15,7 +15,6 @@ import timber.log.Timber
 
 class TwitchMainMediaViewModel(
         private val clientId: String,
-        private val gameId: String,
         private val ioScheduler: Scheduler,
         private val uiScheduler: Scheduler,
         private val twitchMediaRepository: TwitchMediaRepository
@@ -67,7 +66,6 @@ class TwitchMainMediaViewModel(
 
 @Suppress("UNCHECKED_CAST")
 class TwitchMainMediaViewModelFactory(
-        private val clientId: String,
         private val gameId: String,
         private val ioScheduler: Scheduler,
         private val uiScheduler: Scheduler,
@@ -75,7 +73,6 @@ class TwitchMainMediaViewModelFactory(
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return TwitchMainMediaViewModel(
-                clientId,
                 gameId,
                 ioScheduler,
                 uiScheduler,

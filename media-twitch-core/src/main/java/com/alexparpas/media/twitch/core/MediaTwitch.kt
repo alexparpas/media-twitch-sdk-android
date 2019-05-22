@@ -10,7 +10,10 @@ object MediaTwitch {
     lateinit var clientId: String
 
     val twitchMediaRepository by lazy {
-        com.alexparpas.media.twitch.core.TwitchMediaRepository(Injection.getTwitchService())
+        TwitchMediaRepository(
+                clientId,
+                Injection.getTwitchService()
+        )
     }
 
     fun init(app: Application, clientId: String) {
