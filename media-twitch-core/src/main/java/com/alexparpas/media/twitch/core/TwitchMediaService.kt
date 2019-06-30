@@ -11,14 +11,14 @@ internal interface TwitchMediaService {
             @Header("Client-Id") clientId: String,
             @Query("game_id") gameId: String? = null,
             @Query("name") name: String? = null,
-            @Query("first") first: Int = 50
+            @Query("first") first: Int = 100
     ): Single<StreamsResponse>
 
     @GET("helix/clips")
     fun getClips(
             @Header("Client-Id") clientId: String,
             @Query("game_id") gameId: String,
-            @Query("first") first: Int = 50
+            @Query("first") first: Int = 100
     ): Single<GameClipsResponse>
 
     @GET("helix/videos")
@@ -26,6 +26,7 @@ internal interface TwitchMediaService {
             @Header("Client-Id") clientId: String,
             @Query("game_id") gameId: String? = null,
             @Query("id") ids: String? = null,
-            @Query("first") first: Int = 50
+            @Query("sort") sort: String? = "trending",
+            @Query("first") first: Int = 100
     ): Single<GameVideosResponse>
 }
