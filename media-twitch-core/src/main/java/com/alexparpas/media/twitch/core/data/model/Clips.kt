@@ -1,4 +1,4 @@
-package com.alexparpas.media.twitch.core
+package com.alexparpas.media.twitch.core.data.model
 
 import com.google.gson.annotations.SerializedName
 
@@ -19,13 +19,4 @@ data class Clip(
         @SerializedName("view_count") val viewCount: Long,
         @SerializedName("created_at") val createdAt: String,
         @SerializedName("thumbnail_url") val thumbnailURL: String
-)
-
-fun Clip.toVideoBinding() = VideoBinding(
-        link = embedURL,
-        title = title,
-        subtitle = creatorName,
-        viewerCount = viewCount.toString(),
-        thumbnailUrl = thumbnailURL,
-        duration = createdAt
 )

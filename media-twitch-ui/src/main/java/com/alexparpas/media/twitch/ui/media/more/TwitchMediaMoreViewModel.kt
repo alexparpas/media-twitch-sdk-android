@@ -4,10 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.alexparpas.media.twitch.core.MediaType
-import com.alexparpas.media.twitch.core.TwitchMediaRepository
-import com.alexparpas.media.twitch.core.VideoBinding
-import com.alexparpas.media.twitch.core.toVideoBinding
+import com.alexparpas.media.twitch.core.data.TwitchMapper
+import com.alexparpas.media.twitch.core.data.TwitchMediaRepository
+import com.alexparpas.media.twitch.core.data.model.MediaType
+import com.alexparpas.media.twitch.core.data.model.VideoItem
 import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
@@ -18,12 +18,13 @@ class TwitchMediaMoreViewModel(
         private val mediaType: MediaType,
         private val ioScheduler: Scheduler,
         private val uiScheduler: Scheduler,
-        private val repository: TwitchMediaRepository
+        private val repository: TwitchMediaRepository,
+        private val mapper: TwitchMapper
 ) : ViewModel() {
     private val disposables = CompositeDisposable()
 
-    private val _videosLiveData = MutableLiveData<List<VideoBinding>>()
-    val videosLiveData: LiveData<List<VideoBinding>> = _videosLiveData
+    private val _videosLiveData = MutableLiveData<List<VideoItem>>()
+    val videosLiveData: LiveData<List<VideoItem>> = _videosLiveData
 
     private val _errorLiveData = MutableLiveData<String>()
     val errorLiveData: LiveData<String> = _errorLiveData
@@ -53,20 +54,11 @@ class TwitchMediaMoreViewModel(
                 }
     }
 
-    private fun getMediaStream(): Single<List<VideoBinding>> =
+    private fun getMediaStream(): Single<List<VideoItem>> =
             when (mediaType) {
-                MediaType.LIVE -> repository.getLiveStreamsByName(gameId)
-                        .map { streams ->
-                            streams.map { it.toVideoBinding() }
-                        }
-                MediaType.VOD -> repository.getVideosByGame(gameId)
-                        .map { vods ->
-                            vods.map { it.toVideoBinding() }
-                        }
-                MediaType.CLIP -> repository.getClips(gameId)
-                        .map { clips ->
-                            clips.map { it.toVideoBinding() }
-                        }
+                MediaType.LIVE -> repository.getLiveStreamsByName(gameId).map { mapper.mapStreams(it) }
+                MediaType.VOD -> repository.getVideosByGame(gameId).map { mapper.mapVideos(it) }
+                MediaType.CLIP -> repository.getClips(gameId).map { mapper.mapClips(it) }
             }
 
     private fun getErrorMessage(throwable: Throwable): String {
@@ -81,7 +73,8 @@ class TwitchMoreViewModelFactory(
         private val mediaType: MediaType,
         private val ioScheduler: Scheduler,
         private val uiScheduler: Scheduler,
-        private val repository: TwitchMediaRepository
+        private val repository: TwitchMediaRepository,
+        private val mapper: TwitchMapper
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return TwitchMediaMoreViewModel(
@@ -90,7 +83,8 @@ class TwitchMoreViewModelFactory(
                 mediaType,
                 ioScheduler,
                 uiScheduler,
-                repository
+                repository,
+                mapper
         ) as T
     }
 }

@@ -4,14 +4,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.alexparpas.media.twitch.core.CategoryItem
-import com.alexparpas.media.twitch.core.VideoBinding
+import com.alexparpas.media.twitch.core.data.model.CategoryItem
+import com.alexparpas.media.twitch.core.data.model.VideoItem
 import com.alexparpas.media.twitch.ui.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.mt_layout_twitch_stream.view.*
 
 class TwitchMediaVideosAdapter(private val callback: Callback) : RecyclerView.Adapter<MainViewHolder>() {
-    var streams: List<VideoBinding> = mutableListOf()
+    var streams: List<VideoItem> = mutableListOf()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -36,14 +36,18 @@ class TwitchMediaVideosAdapter(private val callback: Callback) : RecyclerView.Ad
 }
 
 class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    fun bind(item: VideoBinding, callback: TwitchMediaVideosAdapter.Callback) {
+    fun bind(item: VideoItem, callback: TwitchMediaVideosAdapter.Callback) {
         if (item.thumbnailUrl.isNotBlank()) {
             Picasso.with(itemView.context).load(item.thumbnailUrl).into(itemView.thumbnail_iv)
         }
         itemView.video_title_tv.text = item.title
         itemView.subtitle_tv.text = item.subtitle
         itemView.views_tv.text = item.viewerCount
-        itemView.duration_tv.text = item.duration
+        itemView.duration_tv.apply {
+            visibility = if (item.shouldShowDuration) View.VISIBLE else View.GONE
+            itemView.duration_tv.text = item.duration
+        }
+        itemView.live_tv.visibility = if (item.isLive) View.VISIBLE else View.GONE
         itemView.setOnClickListener { callback.onStreamClicked(item.link) }
     }
 }

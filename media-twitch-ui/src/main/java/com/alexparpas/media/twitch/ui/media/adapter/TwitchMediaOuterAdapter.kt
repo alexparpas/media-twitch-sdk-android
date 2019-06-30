@@ -5,10 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.alexparpas.media.twitch.core.CategoryItem
-import com.alexparpas.media.twitch.core.MediaBindingItem
-import com.alexparpas.media.twitch.core.MediaItem
-import com.alexparpas.media.twitch.core.VideoBinding
+import com.alexparpas.media.twitch.core.data.model.CategoryItem
+import com.alexparpas.media.twitch.core.data.model.MediaBindingItem
+import com.alexparpas.media.twitch.core.data.model.MediaItem
+import com.alexparpas.media.twitch.core.data.model.VideoItem
 import com.alexparpas.media.twitch.ui.R
 import kotlinx.android.synthetic.main.mt_layout_category_rv_item.view.*
 import kotlinx.android.synthetic.main.mt_layout_video_rv_item.view.*
@@ -65,7 +65,7 @@ class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 }
 
 class VideosViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    fun bind(videos: List<VideoBinding>, callback: TwitchMediaVideosAdapter.Callback) {
+    fun bind(videos: List<VideoItem>, callback: TwitchMediaVideosAdapter.Callback) {
         itemView.recycler_view?.apply {
             adapter = TwitchMediaVideosAdapter(callback).apply { this.streams = videos }
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)

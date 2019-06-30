@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.alexparpas.media.twitch.core.CategoryItem
+import com.alexparpas.media.twitch.core.data.model.CategoryItem
 import com.alexparpas.media.twitch.ui.MediaTwitchUi
 import com.alexparpas.media.twitch.ui.R
 import com.alexparpas.media.twitch.ui.media.adapter.TwitchMediaOuterAdapter

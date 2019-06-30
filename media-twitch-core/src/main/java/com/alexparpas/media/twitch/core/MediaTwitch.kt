@@ -1,6 +1,9 @@
 package com.alexparpas.media.twitch.core
 
 import android.app.Application
+import com.alexparpas.media.twitch.core.data.TwitchMediaLocalStorage
+import com.alexparpas.media.twitch.core.data.TwitchMediaRepository
+import com.alexparpas.media.twitch.core.data.TwitchMediaService
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -12,7 +15,8 @@ object MediaTwitch {
     val twitchMediaRepository by lazy {
         TwitchMediaRepository(
                 clientId,
-                Injection.getTwitchService()
+                Injection.getTwitchService(),
+                TwitchMediaLocalStorage()
         )
     }
 
@@ -29,6 +33,6 @@ object MediaTwitch {
                         .addConverterFactory(GsonConverterFactory.create())
                         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                         .build()
-                        .create(com.alexparpas.media.twitch.core.TwitchMediaService::class.java)!!
+                        .create(TwitchMediaService::class.java)!!
     }
 }

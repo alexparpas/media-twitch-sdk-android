@@ -1,4 +1,4 @@
-package com.alexparpas.media.twitch.core
+package com.alexparpas.media.twitch.core.data.model
 
 import com.google.gson.annotations.SerializedName
 
@@ -18,20 +18,3 @@ data class Stream(
         @SerializedName("thumbnail_url") val thumbnailUrl: String?,
         @SerializedName("tag_ids") val tagIds: List<String>?
 )
-
-fun Stream.toVideoBinding(): VideoBinding {
-    val thumbnailUrl = this.thumbnailUrl
-            ?.replace("{width}", "320")
-            ?.replace("{height}", "180")
-
-    val link = "https://player.twitch.tv/?channel=${userName.orEmpty()}"
-
-    return VideoBinding(
-            link = link,
-            title = userName.orEmpty(),
-            subtitle = title.orEmpty(),
-            viewerCount = viewerCount?.toString().orEmpty(),
-            thumbnailUrl = thumbnailUrl.orEmpty(),
-            duration = startedAt.orEmpty()
-    )
-}

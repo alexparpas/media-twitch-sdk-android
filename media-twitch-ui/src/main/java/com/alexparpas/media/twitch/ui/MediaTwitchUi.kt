@@ -3,7 +3,8 @@ package com.alexparpas.media.twitch.ui
 import android.content.Context
 import android.content.Intent
 import com.alexparpas.media.twitch.core.MediaTwitch
-import com.alexparpas.media.twitch.core.MediaType
+import com.alexparpas.media.twitch.core.data.TwitchMapper
+import com.alexparpas.media.twitch.core.data.model.MediaType
 import com.alexparpas.media.twitch.ui.media.main.TwitchMainMediaFragment
 import com.alexparpas.media.twitch.ui.media.main.TwitchMainMediaViewModelFactory
 import com.alexparpas.media.twitch.ui.media.more.TwitchMediaMoreFragment
@@ -36,7 +37,8 @@ object MediaTwitchUi {
                         gameId = gameId,
                         ioScheduler = Schedulers.io(),
                         uiScheduler = AndroidSchedulers.mainThread(),
-                        twitchMediaRepository = MediaTwitch.twitchMediaRepository
+                        twitchMediaRepository = MediaTwitch.twitchMediaRepository,
+                        mapper = TwitchMapper()
                 )
 
         fun provideMediaMoreViewModelFactory(gameId: String, categoryName: String, mediaType: MediaType): TwitchMoreViewModelFactory =
@@ -46,7 +48,8 @@ object MediaTwitchUi {
                         mediaType = mediaType,
                         ioScheduler = Schedulers.io(),
                         uiScheduler = AndroidSchedulers.mainThread(),
-                        repository = MediaTwitch.twitchMediaRepository
+                        repository = MediaTwitch.twitchMediaRepository,
+                        mapper = TwitchMapper()
                 )
     }
 }

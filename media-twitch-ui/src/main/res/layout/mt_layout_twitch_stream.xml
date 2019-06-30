@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="16dp"
     android:layout_marginEnd="4dp"
+    android:layout_marginBottom="16dp"
     android:orientation="vertical">
 
     <ImageView
@@ -21,7 +21,17 @@
         style="@style/MtDurationTvStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="0:69"
+        app:layout_constraintBottom_toBottomOf="@id/thumbnail_iv"
+        app:layout_constraintEnd_toEndOf="@id/thumbnail_iv"
+        tools:text="0:69" />
+
+    <TextView
+        android:id="@+id/live_tv"
+        style="@style/MtDurationTvStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Live"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/thumbnail_iv"
         app:layout_constraintEnd_toEndOf="@id/thumbnail_iv" />
 

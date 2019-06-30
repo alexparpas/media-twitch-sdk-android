@@ -4,7 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.alexparpas.media.twitch.core.*
+import com.alexparpas.media.twitch.core.data.TwitchMapper
+import com.alexparpas.media.twitch.core.data.TwitchMediaRepository
+import com.alexparpas.media.twitch.core.data.model.*
 import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
@@ -17,7 +19,8 @@ class TwitchMainMediaViewModel(
         private val gameId: String,
         private val ioScheduler: Scheduler,
         private val uiScheduler: Scheduler,
-        private val twitchMediaRepository: TwitchMediaRepository
+        private val twitchMediaRepository: TwitchMediaRepository,
+        private val mapper: TwitchMapper
 ) : ViewModel() {
     private val disposables = CompositeDisposable()
 
@@ -51,11 +54,11 @@ class TwitchMainMediaViewModel(
     private fun transformData(streams: List<Stream>, clips: List<Clip>, videos: List<Video>): List<MediaItem> {
         return listOf(
                 CategoryItem("Streams", MediaType.LIVE),
-                MediaBindingItem(streams.map { it.toVideoBinding() }),
-                CategoryItem("Clips", MediaType.CLIP),
-                MediaBindingItem(clips.map { it.toVideoBinding() }),
+                MediaBindingItem(mapper.mapStreams(streams)),
                 CategoryItem("Videos", MediaType.VOD),
-                MediaBindingItem(videos.map { it.toVideoBinding() })
+                MediaBindingItem(mapper.mapVideos(videos)),
+                CategoryItem("Clips", MediaType.CLIP),
+                MediaBindingItem(mapper.mapClips(clips))
         )
     }
 
@@ -70,14 +73,16 @@ class TwitchMainMediaViewModelFactory(
         private val gameId: String,
         private val ioScheduler: Scheduler,
         private val uiScheduler: Scheduler,
-        private val twitchMediaRepository: TwitchMediaRepository
+        private val twitchMediaRepository: TwitchMediaRepository,
+        private val mapper: TwitchMapper
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return TwitchMainMediaViewModel(
                 gameId,
                 ioScheduler,
                 uiScheduler,
-                twitchMediaRepository
+                twitchMediaRepository,
+                mapper
         ) as T
     }
 }
