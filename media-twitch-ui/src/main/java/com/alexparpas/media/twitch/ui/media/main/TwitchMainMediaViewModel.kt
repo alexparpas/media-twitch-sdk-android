@@ -20,6 +20,7 @@ class TwitchMainMediaViewModel(
         private val twitchMediaRepository: TwitchMediaRepository
 ) : ViewModel() {
     private val disposables = CompositeDisposable()
+
     private val _streamsLiveData = MutableLiveData<List<MediaItem>>()
     val streamsLiveData: LiveData<List<MediaItem>> = _streamsLiveData
 
@@ -49,11 +50,11 @@ class TwitchMainMediaViewModel(
 
     private fun transformData(streams: List<Stream>, clips: List<Clip>, videos: List<Video>): List<MediaItem> {
         return listOf(
-                CategoryItem("Streams"),
+                CategoryItem("Streams", MediaType.LIVE),
                 MediaBindingItem(streams.map { it.toVideoBinding() }),
-                CategoryItem("Clips"),
+                CategoryItem("Clips", MediaType.CLIP),
                 MediaBindingItem(clips.map { it.toVideoBinding() }),
-                CategoryItem("Videos"),
+                CategoryItem("Videos", MediaType.VOD),
                 MediaBindingItem(videos.map { it.toVideoBinding() })
         )
     }

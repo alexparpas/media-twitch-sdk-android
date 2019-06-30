@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.mt_fragment_twitch_media.*
 
 class TwitchMainMediaFragment : androidx.fragment.app.Fragment(), TwitchMediaVideosAdapter.Callback {
     private lateinit var viewModel: TwitchMainMediaViewModel
+    private val gameId: String? by lazy { arguments?.getString(MediaTwitchUi.ARG_GAME_ID) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +38,7 @@ class TwitchMainMediaFragment : androidx.fragment.app.Fragment(), TwitchMediaVid
     private fun initViewModel() {
         viewModel = ViewModelProviders.of(
                 this,
-                MediaTwitchUi.Injection.provideMediaViewModelFactory(gameId = requireNotNull(arguments?.getString(MediaTwitchUi.ARG_GAME_ID)))
+                MediaTwitchUi.Injection.provideMediaViewModelFactory(gameId = requireNotNull(gameId))
         ).get(TwitchMainMediaViewModel::class.java)
     }
 
@@ -58,7 +59,11 @@ class TwitchMainMediaFragment : androidx.fragment.app.Fragment(), TwitchMediaVid
     }
 
     override fun onCategoryClicked(category: CategoryItem) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        MediaTwitchUi.getTwitchMediaMoreFragment(
+                gameId = requireNotNull(gameId),
+                categoryName = category.categoryName,
+                mediaType = category.mediaType
+        ).show(childFragmentManager, "frag")
     }
 
     override fun onStreamClicked(link: String) {

@@ -14,7 +14,8 @@ import kotlinx.android.synthetic.main.mt_layout_category_rv_item.view.*
 import kotlinx.android.synthetic.main.mt_layout_video_rv_item.view.*
 
 class TwitchMediaOuterAdapter(private val callback: TwitchMediaVideosAdapter.Callback) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    var streams: List<MediaItem> = mutableListOf()
+    var
+            streams: List<MediaItem> = mutableListOf()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -57,8 +58,8 @@ class TwitchMediaOuterAdapter(private val callback: TwitchMediaVideosAdapter.Cal
 class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(categoryItem: CategoryItem, callback: TwitchMediaVideosAdapter.Callback) {
         itemView.category_tv.apply {
+            itemView.setOnClickListener { callback.onCategoryClicked(categoryItem) }
             text = categoryItem.categoryName
-            setOnClickListener { callback.onCategoryClicked(categoryItem) }
         }
     }
 }
@@ -67,7 +68,7 @@ class VideosViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(videos: List<VideoBinding>, callback: TwitchMediaVideosAdapter.Callback) {
         itemView.recycler_view?.apply {
             adapter = TwitchMediaVideosAdapter(callback).apply { this.streams = videos }
-            layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             setHasFixedSize(true)
         }
     }
