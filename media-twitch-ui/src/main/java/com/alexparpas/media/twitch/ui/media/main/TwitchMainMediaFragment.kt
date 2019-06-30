@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.alexparpas.media.twitch.core.data.model.CategoryItem
 import com.alexparpas.media.twitch.ui.MediaTwitchUi
 import com.alexparpas.media.twitch.ui.R
@@ -28,7 +29,10 @@ class TwitchMainMediaFragment : androidx.fragment.app.Fragment(), TwitchMediaVid
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = TwitchMediaOuterAdapter(this)
+        val adapter = TwitchMediaOuterAdapter(
+                callback = this,
+                viewPool = RecyclerView.RecycledViewPool()
+        )
 
         initRecyclerView(adapter)
 

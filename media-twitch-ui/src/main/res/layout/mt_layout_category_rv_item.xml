@@ -4,10 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingStart="16dp"
-    android:paddingTop="16dp"
-    android:paddingEnd="16dp"
-    android:paddingBottom="8dp">
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/see_all_tv"
@@ -26,14 +23,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Category" />
-
-    <TextView
-        android:id="@+id/description_tv"
-        style="@style/MtCategoryDescriptionTvStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/category_tv"
-        app:layout_constraintEnd_toStartOf="@id/see_all_tv"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="This is a description mate" />
 </androidx.constraintlayout.widget.ConstraintLayout>
