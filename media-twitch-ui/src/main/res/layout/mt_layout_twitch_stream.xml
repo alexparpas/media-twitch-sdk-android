@@ -21,17 +21,19 @@
         style="@style/MtDurationTvStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        tools:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/thumbnail_iv"
         app:layout_constraintEnd_toEndOf="@id/thumbnail_iv"
         tools:text="0:69" />
 
     <TextView
         android:id="@+id/live_tv"
-        style="@style/MtDurationTvStyle"
+        style="@style/MtLiveTvStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Live"
+        android:text="@string/mt_live"
         android:visibility="gone"
+        tools:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@id/thumbnail_iv"
         app:layout_constraintEnd_toEndOf="@id/thumbnail_iv" />
 

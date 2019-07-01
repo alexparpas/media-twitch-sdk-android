@@ -18,6 +18,12 @@
         <item name="android:padding">4dp</item>
     </style>
 
+    <style name="BaseTwitchLiveTvStyle">
+        <item name="android:background">#D03125</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:padding">4dp</item>
+    </style>
+
     <style name="BaseTwitchTitleTvStyle">
         <item name="android:layout_gravity">center</item>
         <item name="android:ellipsize">end</item>
@@ -70,6 +76,8 @@
     <style name="MtThumbnailIvStyle" parent="BaseTwitchThumbnailIvStyle" />
 
     <style name="MtDurationTvStyle" parent="BaseTwitchDurationTvStyle" />
+
+    <style name="MtLiveTvStyle" parent="BaseTwitchLiveTvStyle" />
 
     <style name="MtTitleTvStyle" parent="BaseTwitchTitleTvStyle" />
 

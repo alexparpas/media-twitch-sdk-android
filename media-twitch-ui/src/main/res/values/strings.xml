@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Media - Twitch</string>
+    <string name="mt_live">Live</string>
 </resources>

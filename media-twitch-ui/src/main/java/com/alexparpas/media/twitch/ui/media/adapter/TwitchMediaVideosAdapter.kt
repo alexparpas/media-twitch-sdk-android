@@ -38,7 +38,10 @@ class TwitchMediaVideosAdapter(private val callback: Callback) : RecyclerView.Ad
 class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(item: VideoItem, callback: TwitchMediaVideosAdapter.Callback) {
         if (item.thumbnailUrl.isNotBlank()) {
-            Picasso.with(itemView.context).load(item.thumbnailUrl).into(itemView.thumbnail_iv)
+            Picasso.with(itemView.context)
+                    .load(item.thumbnailUrl)
+                    .placeholder(R.drawable.mt_video_placeholder)
+                    .into(itemView.thumbnail_iv)
         }
         itemView.video_title_tv.text = item.title
         itemView.subtitle_tv.text = item.subtitle
