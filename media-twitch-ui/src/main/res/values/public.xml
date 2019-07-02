@@ -2,6 +2,7 @@
 <resources>
     <public name="mt_main_background" type="drawable" />
     <public name="mt_more_background" type="drawable" />
+    <public name="mt_video_background" type="drawable" />
     <public name="mt_default_text_colour" type="color" />
     <public name="mt_category_more" type="string" />
     <public name="mt_error_generic" type="string" />

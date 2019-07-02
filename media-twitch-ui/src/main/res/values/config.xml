@@ -3,6 +3,7 @@
 
     <drawable name="mt_main_background">#FFFFFF</drawable>
     <drawable name="mt_more_background">#FFFFFF</drawable>
+    <drawable name="mt_video_background">#000000</drawable>
     <color name="mt_default_text_color">#000000</color>
     <string name="mt_category_more">See All</string>
     <string name="mt_error_generic">Could not load videos</string>
