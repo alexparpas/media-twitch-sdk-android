@@ -1,6 +1,7 @@
 package com.alexparpas.media.twitch.ui.video
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.alexparpas.media.twitch.ui.MediaTwitchUi
@@ -21,6 +22,7 @@ class TwitchPlayerActivity : AppCompatActivity() {
     private fun embedPlayer(link: String?) {
         web_view.apply {
             settings.apply {
+                setBackgroundColor(Color.TRANSPARENT)
                 javaScriptEnabled = true
                 mediaPlaybackRequiresUserGesture = false
             }

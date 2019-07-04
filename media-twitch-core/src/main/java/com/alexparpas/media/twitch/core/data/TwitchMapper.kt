@@ -68,9 +68,10 @@ class TwitchMapper {
                     .replace("%{height}", "180")
 
             val durationPatterns: Pair<String, String> = TimeFormatter.getPatterns(duration)
+            val link = "https://player.twitch.tv/?video=$id"
 
             return VideoItem(
-                    link = url,
+                    link = link,
                     title = title,
                     subtitle = userName,
                     viewerCount = map(viewCount.toDouble()),
