@@ -10,10 +10,13 @@ import com.alexparpas.media.twitch.ui.media.main.TwitchMainMediaViewModelFactory
 import com.alexparpas.media.twitch.ui.media.more.TwitchMediaMoreFragment
 import com.alexparpas.media.twitch.ui.media.more.TwitchMoreViewModelFactory
 import com.alexparpas.media.twitch.ui.video.TwitchPlayerActivity
+import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import io.reactivex.subjects.PublishSubject
 
 object MediaTwitchUi {
+    private val videoPlayedSubject: PublishSubject<String> = PublishSubject.create()
     internal const val ARG_LINK = "ARG_LINK"
     internal const val ARG_GAME_ID = "ARG_GAME_ID"
 
@@ -29,7 +32,10 @@ object MediaTwitchUi {
                     putExtra(ARG_LINK, url)
                 }
         )
+        videoPlayedSubject.onNext(url)
     }
+
+    fun onVideoPlayed(): Observable<String> = videoPlayedSubject
 
     internal object Injection {
         fun provideMediaViewModelFactory(gameId: String): TwitchMainMediaViewModelFactory =
